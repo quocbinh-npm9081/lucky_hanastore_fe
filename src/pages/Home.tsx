@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Fireworks } from '@fireworks-js/react';
-
-const background = require('./assets/sai-gon-by-night-3914364_1280.jpg');
+import { Box, Typography, Button } from '@mui/material';
+const background = require('../assets/sai-gon-by-night-3914364_1280.jpg');
 
 const Home = () => {
   const now = new Date();
@@ -78,7 +78,7 @@ const Home = () => {
       }}
     >
       <div className='content-wrapper'>
-        <p className='text-3xl font-bold '>HanaStore Countdown 2023</p>
+        <p className='wellcome'>HanaStore Countdown 2023</p>
         <h1 className='year' id='new-year'>
           {newYear}
         </h1>
@@ -108,6 +108,11 @@ const Home = () => {
             <div className='timer-box__text'>Giây</div>
           </div>
         </div>
+        <Box width='100%' textAlign='center' style={{ marginTop: '10rem' }}>
+          <Button size='large' variant='contained' href='#outlined-buttons'>
+            Vong quay may man
+          </Button>{' '}
+        </Box>
       </div>
     </Fireworks>
   );
