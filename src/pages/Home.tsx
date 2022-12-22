@@ -1,11 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import { Fireworks } from '@fireworks-js/react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
 const background = require('../assets/sai-gon-by-night-3914364_1280.jpg');
+const useStyles = makeStyles({
+  contentWrapper: {
+    zIndex: '99',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: ' 100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0 .8rem',
+  },
+  header: {
+    fontSize: '3rem !important',
+    fontWeight: '300 !important',
+  },
 
+  wellcome: {
+    fontSize: '2rem !important',
+  },
+
+  year: {
+    color: 'white',
+    fontSize: '15rem !important',
+    fontWeight: '900 !important',
+    lineHeight: '1.5 !important',
+  },
+  timer: {
+    textAlign: 'center',
+  },
+  timerBoxCount: {
+    width: '100%',
+    display: 'grid',
+    placeItems: 'center',
+    backgroundColor: '#1c2451',
+    margin: '0 auto',
+  },
+
+  timerBoxText: {
+    display: 'grid',
+    placeItems: 'center',
+    backgroundColor: '#085391',
+    padding: '1rem 0',
+    fontSize: '1rem',
+    fontWeight: '500',
+    width: '100%',
+    margin: '0 auto',
+  },
+  bg: {
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    overflowY: 'hidden',
+  },
+});
 const Home = () => {
+  const classes = useStyles();
   const now = new Date();
-
   const newYear = now.getFullYear() + 1;
   const countToDate = new Date(now.getFullYear() + 1, 0, 1).getTime();
   const [days, setDays] = useState<string>('');
@@ -77,43 +135,48 @@ const Home = () => {
         backgroundImage: `url(${background})`,
       }}
     >
-      <div className='content-wrapper'>
-        <p className='wellcome'>HanaStore Countdown 2023</p>
-        <h1 className='year' id='new-year'>
+      <Box className={classes.contentWrapper}>
+        <Typography variant='h5' sx={{ color: 'white' }}>
+          HanaStore Countdown
+        </Typography>
+        <Typography variant='h1' sx={{ padding: '3rem 0' }}>
           {newYear}
-        </h1>
-        <div className='timer'>
-          <div className='timer-box'>
-            <div className='timer-box__count'>
-              <span id='days'>{days}</span>
-            </div>
-            <div className='timer-box__text'>Ngày</div>
-          </div>
-          <div className='timer-box'>
-            <div className='timer-box__count'>
-              <span id='hours'>{hours}</span>
-            </div>
-            <div className='timer-box__text'>Giờ</div>
-          </div>
-          <div className='timer-box'>
-            <div className='timer-box__count'>
-              <span id='minutes'>{minutes}</span>
-            </div>
-            <div className='timer-box__text'>Phút</div>
-          </div>
-          <div className='timer-box'>
-            <div className='timer-box__count'>
-              <span id='seconds'>{seconds}</span>
-            </div>
-            <div className='timer-box__text'>Giây</div>
-          </div>
-        </div>
-        <Box width='100%' textAlign='center' style={{ marginTop: '10rem' }}>
-          <Button size='large' variant='contained' href='#outlined-buttons'>
-            Vong quay may man
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={3} className={classes.timer}>
+            <Box className={classes.timerBoxCount}>
+              <Typography sx={{ fontSize: '3rem' }}>{days}</Typography>
+            </Box>
+            <Box className={classes.timerBoxText}>Ngày</Box>
+          </Grid>
+          <Grid item xs={3} className={classes.timer}>
+            <Box className={classes.timerBoxCount}>
+              <Typography sx={{ fontSize: '3rem' }}>{hours}</Typography>
+            </Box>
+            <Box className={classes.timerBoxText}>Giờ</Box>
+          </Grid>
+          <Grid item xs={3} className={classes.timer}>
+            <Box className={classes.timerBoxCount}>
+              <Typography sx={{ fontSize: '3rem' }}>{minutes}</Typography>
+            </Box>
+            <Box className={classes.timerBoxText}>Phút</Box>
+          </Grid>
+          <Grid item xs={3} className={classes.timer}>
+            <Box className={classes.timerBoxCount}>
+              <Typography sx={{ fontSize: '3rem' }}>{seconds}</Typography>
+            </Box>
+            <Box className={classes.timerBoxText}>Giây</Box>
+          </Grid>
+        </Grid>
+        <Box width='100%' textAlign='center' style={{ marginTop: '2rem' }}>
+          <Button size='large' variant='contained'>
+            <Link to='/miniGame' style={{ textDecoration: 'none', color: 'white' }}>
+              {' '}
+              Vòng quay may mắn
+            </Link>
           </Button>{' '}
         </Box>
-      </div>
+      </Box>
     </Fireworks>
   );
 };

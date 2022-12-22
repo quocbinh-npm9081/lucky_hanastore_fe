@@ -1,48 +1,47 @@
 import React, { useState } from 'react';
 import Roulette from '../components/Roulette';
-
+import Box from '@mui/material/Box';
+const bg = require('../assets/background-tet-2023-20.jpg');
 const MiniGame = () => {
   const [inputList, setInputList] = useState([
     {
-      id: '1',
-      text: 'Где туалет?',
+      id: '0xcz',
+      text: 'Binh',
     },
     {
-      id: '2',
-      text: 'Можно вкусную жижу',
+      id: '1zxc',
+      text: 'An',
     },
     {
-      id: '3',
-      text: 'А стики есть?',
+      id: '2zxc',
+      text: 'Link',
     },
     {
-      id: '4',
-      text: 'Испаритель на вейп',
+      id: '3zxc',
+      text: 'nhi',
     },
     {
-      id: '5',
-      text: 'Батарейки есть?',
+      id: 'zxc4',
+      text: 'tuan',
     },
     {
-      id: '6',
-      text: 'А где банкомат?',
+      id: 'zxc5',
+      text: 'Bay',
     },
   ]);
 
   return (
-    <div className='bg'>
-      {' '}
-      <div className='wrapper typo' id='wrapper'>
-        <section id='luckywheel' className='hc-luckywheel'>
-          <div className='hc-luckywheel-container'>
-            <canvas className='hc-luckywheel-canvas' width='500px' height='500px'>
-              Vòng Xoay May Mắn
-            </canvas>
-          </div>
-          <Roulette data={inputList} />
-        </section>
-      </div>
-    </div>
+    <Box
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        overflowY: 'hidden',
+      }}
+    >
+      <Roulette data={inputList} />
+    </Box>
   );
 };
 
