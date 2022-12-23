@@ -38,11 +38,12 @@ const Register = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component='h1' variant='h5'>
+          <Typography component='h1' variant='h5' style={{color: '#000'}}>
             Đăng kí Hana
           </Typography>
           <Box sx={{ mt: 3, width: '100%' }}>
             <FormProvider defaultValues={defaultValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+              <SubTextField name='name' label='Tên của bạn' />
               <SubTextField name='phoneNumber' label='Số điện thoại' />
               <Button color='error' type='submit' fullWidth variant='contained' sx={{ mt: 1, mb: 1 }}>
                 Đăng kí{' '}

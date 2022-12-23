@@ -9,18 +9,36 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import FormProvider from '../components/HookForm/FormProvider';
 import SubTextField from '../components/HookForm/SubTextField';
+import { login } from '../api/apiAuth';
 import * as yup from 'yup';
-
+import { useNavigate } from 'react-router-dom';
 const validationSchema = yup.object().shape({
+  name: yup.string().required('Vui lòng nhập tên của bạn'),
   phoneNumber: yup.string().required('Vui lòng nhập số điện thoại'),
 });
 const defaultValues = {
+  name: '',
   phoneNumber: '',
 };
+
+
+
 const Login = () => {
-  const onSubmit = (data: any) => {
-    console.log('DATA: :', data);
+  const redirect = useNavigate();
+
+
+  const postDataForLogin = async (data :any) => {
+    const isLogin = await login(data);
+    
+    if(isLogin.status === 200) return redirect('/miniGame');
   };
+
+
+
+  const onSubmit = async(data: any) => {
+   return  postDataForLogin(data);
+  };
+
 
   return (
     <div>
@@ -41,7 +59,9 @@ const Login = () => {
           </Typography>
           <Box sx={{ mt: 3, width: '100%' }}>
             <FormProvider defaultValues={defaultValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+              <SubTextField name='name' label='Tên' />
               <SubTextField name='phoneNumber' label='Số điện thoại' />
+
               <Button type='submit' fullWidth variant='contained' sx={{ mt: 1, mb: 1 }}>
                 Đăng nhập
               </Button>

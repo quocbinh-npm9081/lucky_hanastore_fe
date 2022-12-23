@@ -3,6 +3,9 @@ import { Fireworks } from '@fireworks-js/react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const background = require('../assets/sai-gon-by-night-3914364_1280.jpg');
 const useStyles = makeStyles({
   contentWrapper: {
